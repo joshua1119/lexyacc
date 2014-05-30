@@ -11,7 +11,6 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\clc\clc_win32\clc_win32.vcxproj" />
     <None Include="..\frame.l" />
     <None Include="..\frame.y" />
     <None Include="..\Makefile" />
@@ -24,9 +23,9 @@
     <ClInclude Include="..\frame.tab.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{D756139C-CC55-45A1-BA57-F1CCD91F3337}</ProjectGuid>
+    <ProjectGuid>{DA72BF7B-7F0E-4E1C-8D3E-1B7937456ED9}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>plain_win32</RootNamespace>
+    <RootNamespace>clc_win32</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
