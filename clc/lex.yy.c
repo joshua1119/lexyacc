@@ -451,14 +451,15 @@ int yy_flex_debug = 0;
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
-#line 1 "frame.l"
+#line 1 "clc.l"
 #define YY_NO_UNISTD_H 1
-#line 3 "frame.l"
+#line 3 "clc.l"
 #include<stdio.h>
 #include<string.h>  
-#include "frame.tab.h"  
+#include "clc.tab.h"  
 extern int yylval;  
-#line 462 "lex.yy.c"
+void yyerror(const char* s);
+#line 463 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -640,10 +641,10 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
     
-#line 18 "frame.l"
+#line 19 "clc.l"
 
 
-#line 647 "lex.yy.c"
+#line 648 "lex.yy.c"
 
 	if ( !(yy_init) )
 		{
@@ -728,55 +729,55 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 20 "frame.l"
+#line 21 "clc.l"
 {sscanf(yytext, "%d", &yylval); return INTEGER;}  
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 21 "frame.l"
+#line 22 "clc.l"
 {return PLUS;}  
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 22 "frame.l"
+#line 23 "clc.l"
 {return MINUS;}  
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 23 "frame.l"
+#line 24 "clc.l"
 {return TIMES;}  
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 24 "frame.l"
+#line 25 "clc.l"
 {return DIVIDE;}  
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 25 "frame.l"
+#line 26 "clc.l"
 {return LP;}  
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 26 "frame.l"
+#line 27 "clc.l"
 {return RP;}  
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 27 "frame.l"
+#line 28 "clc.l"
 ;   
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 28 "frame.l"
-{printf("Error");exit(1);}   
+#line 29 "clc.l"
+{printf("Error");yyerror(yytext);}   
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 30 "frame.l"
+#line 31 "clc.l"
 ECHO;
 	YY_BREAK
-#line 780 "lex.yy.c"
+#line 781 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1774,7 +1775,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 30 "frame.l"
+#line 31 "clc.l"
 
 
 void yyerror(const char* s)

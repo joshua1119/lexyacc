@@ -1,15 +1,15 @@
 LEX=flex
 YACC=bison
 CC=gcc
-all:lex.yy.o frame.tab.o
-	$(CC) -g lex.yy.o frame.tab.o -o a.exe
-lex.yy.o:lex.yy.c frame.tab.h
+all:lex.yy.o clc.tab.o
+	$(CC) -g lex.yy.o clc.tab.o -o a.exe
+lex.yy.o:lex.yy.c clc.tab.h
 	$(CC) -c lex.yy.c
-frame.tab.o:frame.tab.c
-	$(CC) -c frame.tab.c
-frame.tab.c frame.tab.h:frame.y
-	$(YACC) -d frame.y
-lex.yy.c:frame.l
-	$(LEX) frame.l
+clc.tab.o:clc.tab.c
+	$(CC) -c clc.tab.c
+clc.tab.c clc.tab.h:clc.y
+	$(YACC) -d clc.y
+lex.yy.c:clc.l
+	$(LEX) clc.l lex.yy.c
 clean:
 	rm -f *.o *.exe

@@ -11,16 +11,16 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\frame.l" />
-    <None Include="..\frame.y" />
+    <None Include="..\clc.l" />
+    <None Include="..\clc.y" />
     <None Include="..\Makefile" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\frame.tab.c" />
+    <ClCompile Include="..\clc.tab.c" />
     <ClCompile Include="..\lex.yy.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\frame.tab.h" />
+    <ClInclude Include="..\clc.tab.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{DA72BF7B-7F0E-4E1C-8D3E-1B7937456ED9}</ProjectGuid>
@@ -53,6 +53,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(SolutionDir)clc;$(IncludePath)</IncludePath>
+    <SourcePath>$(SolutionDir)clc;$(SourcePath)</SourcePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
