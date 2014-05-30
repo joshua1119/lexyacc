@@ -1,4 +1,5 @@
 %option nounistd
+%start ccomment
 %{
 #include <stdio.h>
 #include <ctype.h>
@@ -17,11 +18,17 @@ void OUT(int c, char* val);
 #define NE 11
 #define GT 12
 #define GE 13
+#define COMMENT 14
 %}
 digit [0-9]
 alpha [a-zA-Z]
 alnum [a-zA-Z0-9]
 %%
+"/*" {BEGIN ccomment;}/* 开始识别注释，进入条件ccomment */
+<ccomment>\n {OUT(COMMENT,"new line commment");}/* 识别注释内容 */
+<ccomment>[^(*/)\n]* {OUT(COMMENT,yytext);}/* 识别注释内容 */
+<ccomment>"*/" {BEGIN 0;}/* 注释识别完毕，退出ccomment条件 */
+
 end {OUT(END,NULL);}
 if {OUT(IF,NULL);}
 then {OUT(THEN,NULL);}
@@ -34,7 +41,8 @@ else {OUT(ELSE,NULL);}
 "<>" {OUT(NE,NULL);}
 ">" {OUT(GT,NULL);}
 ">=" {OUT(GE,NULL);}
-. {OUT(0,"error");}   
+
+
 %%
 void OUT(int c, char *val)
 {
