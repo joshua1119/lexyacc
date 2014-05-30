@@ -5,6 +5,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "plain_win32", "plain\plain_
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "clc_win32", "clc\clc_win32\clc_win32.vcxproj", "{DA72BF7B-7F0E-4E1C-8D3E-1B7937456ED9}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "kof_win32", "kof\kof_win32\kof_win32.vcxproj", "{B28D11D9-5547-466C-906F-448B2087EB7F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -19,6 +21,10 @@ Global
 		{DA72BF7B-7F0E-4E1C-8D3E-1B7937456ED9}.Debug|Win32.Build.0 = Debug|Win32
 		{DA72BF7B-7F0E-4E1C-8D3E-1B7937456ED9}.Release|Win32.ActiveCfg = Release|Win32
 		{DA72BF7B-7F0E-4E1C-8D3E-1B7937456ED9}.Release|Win32.Build.0 = Release|Win32
+		{B28D11D9-5547-466C-906F-448B2087EB7F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{B28D11D9-5547-466C-906F-448B2087EB7F}.Debug|Win32.Build.0 = Debug|Win32
+		{B28D11D9-5547-466C-906F-448B2087EB7F}.Release|Win32.ActiveCfg = Release|Win32
+		{B28D11D9-5547-466C-906F-448B2087EB7F}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

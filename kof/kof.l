@@ -2,7 +2,7 @@
 %{
 #include<stdio.h>
 #include<string.h>  
-#include "clc.tab.h"  
+#include "kof.tab.h"  
 extern int yylval;  
 void yyerror(const char* s);
 %}  
@@ -31,5 +31,5 @@ ws {delim}*
 %%
 void yyerror(const char* s)
 {
-    fprintf(stderr,"errorstr:%s",s);
+    fprintf(stderr,"errorstr:%s\n",s);
 }
