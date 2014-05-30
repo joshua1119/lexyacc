@@ -1,3 +1,4 @@
+%option nounistd
 %{
 #include<stdio.h>
 #include<string.h>  
@@ -13,7 +14,9 @@ lp "("
 rp ")"  
 delim [ /n/t]  
 ws {delim}*  
+
 %%  
+
 {numbers} {sscanf(yytext, "%d", &yylval); return INTEGER;}  
 {plus} {return PLUS;}  
 {minus} {return MINUS;}  
@@ -22,5 +25,10 @@ ws {delim}*
 {lp} {return LP;}  
 {rp} {return RP;}  
 {ws}       ;   
-. {printf("Error");exit(1);}    
+. {printf("Error");exit(1);}   
+ 
 %%
+void yyerror(const char* s)
+{
+    fprintf(stderr,"%s",s);
+}

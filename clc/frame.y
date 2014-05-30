@@ -1,8 +1,9 @@
 %{
 #include <stdio.h>
-//#include "lex.yy.c"
 #define YYSTYPE int  
 int yyparse(void);
+extern int yylex();
+extern int yyerror(const char* s);
 %}
 %token INTEGER PLUS MINUS TIMES DIVIDE LP RP
 %%
@@ -24,10 +25,7 @@ int main()
 {
     return yyparse();
 }
-void yyerror(char* s)
-{
-    fprintf(stderr,"%s",s);
-}
+
 int yywrap()
 {
     return 1;

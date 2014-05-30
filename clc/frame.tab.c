@@ -66,12 +66,13 @@
 #line 1 "frame.y"
 
 #include <stdio.h>
-//#include "lex.yy.c"
 #define YYSTYPE int  
 int yyparse(void);
+extern int yylex();
+extern int yyerror(const char* s);
 
 /* Line 371 of yacc.c  */
-#line 75 "frame.tab.c"
+#line 76 "frame.tab.c"
 
 # ifndef YY_NULL
 #  if defined __cplusplus && 201103L <= __cplusplus
@@ -146,7 +147,7 @@ int yyparse ();
 /* Copy the second part of user declarations.  */
 
 /* Line 390 of yacc.c  */
-#line 150 "frame.tab.c"
+#line 151 "frame.tab.c"
 
 #ifdef short
 # undef short
@@ -446,8 +447,8 @@ static const yytype_int8 yyrhs[] =
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,     9,     9,    11,    12,    13,    15,    16,    17,    19,
-      20
+       0,    10,    10,    12,    13,    14,    16,    17,    18,    20,
+      21
 };
 #endif
 
@@ -1334,61 +1335,61 @@ yyreduce:
     {
         case 2:
 /* Line 1787 of yacc.c  */
-#line 9 "frame.y"
+#line 10 "frame.y"
     {printf("%d/n",(yyvsp[(1) - (1)]));}
     break;
 
   case 3:
 /* Line 1787 of yacc.c  */
-#line 11 "frame.y"
+#line 12 "frame.y"
     {(yyval) = (yyvsp[(1) - (3)]) + (yyvsp[(3) - (3)]);}
     break;
 
   case 4:
 /* Line 1787 of yacc.c  */
-#line 12 "frame.y"
+#line 13 "frame.y"
     {(yyval) = (yyvsp[(1) - (3)]) - (yyvsp[(3) - (3)]);}
     break;
 
   case 5:
 /* Line 1787 of yacc.c  */
-#line 13 "frame.y"
+#line 14 "frame.y"
     {(yyval) = (yyvsp[(1) - (1)]);}
     break;
 
   case 6:
 /* Line 1787 of yacc.c  */
-#line 15 "frame.y"
+#line 16 "frame.y"
     {(yyval) = (yyvsp[(1) - (3)]) * (yyvsp[(3) - (3)]);}
     break;
 
   case 7:
 /* Line 1787 of yacc.c  */
-#line 16 "frame.y"
+#line 17 "frame.y"
     {(yyval) = (yyvsp[(1) - (3)])/(yyvsp[(3) - (3)]);}
     break;
 
   case 8:
 /* Line 1787 of yacc.c  */
-#line 17 "frame.y"
+#line 18 "frame.y"
     {(yyval) = (yyvsp[(1) - (1)]);}
     break;
 
   case 9:
 /* Line 1787 of yacc.c  */
-#line 19 "frame.y"
+#line 20 "frame.y"
     {(yyval) = (yyvsp[(1) - (1)]);}
     break;
 
   case 10:
 /* Line 1787 of yacc.c  */
-#line 20 "frame.y"
+#line 21 "frame.y"
     {(yyval) = (yyvsp[(2) - (3)]);}
     break;
 
 
 /* Line 1787 of yacc.c  */
-#line 1392 "frame.tab.c"
+#line 1393 "frame.tab.c"
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -1620,16 +1621,13 @@ yyreturn:
 
 
 /* Line 2050 of yacc.c  */
-#line 22 "frame.y"
+#line 23 "frame.y"
 
 int main()
 {
     return yyparse();
 }
-void yyerror(char* s)
-{
-    fprintf(stderr,"%s",s);
-}
+
 int yywrap()
 {
     return 1;
