@@ -1,6 +1,6 @@
 LEX=flex
 YACC=bison
-CC=g++
+CC=gcc
 all:lex.yy.o frame.tab.o
 	$(CC) -g lex.yy.o frame.tab.o -o a.exe
 lex.yy.o:lex.yy.c frame.tab.h
@@ -12,4 +12,4 @@ frame.tab.c frame.tab.h:frame.y
 lex.yy.c:frame.l
 	$(LEX) frame.l
 clean:
-	rm -f *.o *.c *.h 
+	rm -f *.o *.exe

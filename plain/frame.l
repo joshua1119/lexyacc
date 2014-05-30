@@ -1,12 +1,9 @@
 %{
-
-extern "C"{// 如果是采用C++语言环境，就必须设置C链接类型
+#include "io.h"
 int yywrap(void);
 int yylex(void);// 这个是lex产生的词法分析函数，必须在这里进行声明
-}
 %}
 %option nounistd
-%option never-interactive
 %%
 %%
 int yywrap(void)

@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="..\frame.l" />
+    <None Include="..\frame.y" />
+    <None Include="..\Makefile" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\frame.tab.c" />
+    <ClCompile Include="..\lex.yy.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\frame.tab.h" />
+  </ItemGroup>
+</Project>
