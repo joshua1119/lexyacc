@@ -4,7 +4,6 @@
     <None Include="..\frame.l" />
     <None Include="..\frame.y" />
     <None Include="..\Makefile" />
-    <None Include="..\..\clc\clc_win32\clc_win32.vcxproj" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\frame.tab.c" />

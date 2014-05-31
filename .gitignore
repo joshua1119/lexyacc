@@ -4,3 +4,4 @@ Debug
 *.suo
 *.o
 *.exe
+*.stackdump

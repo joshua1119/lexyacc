@@ -4,6 +4,10 @@
 int yyparse(void);
 extern int yylex();
 extern int yyerror(const char* s);
+
+struct yy_buffer_state;
+typedef struct yy_buffer_state *YY_BUFFER_STATE;
+extern YY_BUFFER_STATE yy_scan_string (char*);
 %}
 %token INTEGER PLUS MINUS TIMES DIVIDE LP RP
 %%
@@ -23,6 +27,7 @@ factor : INTEGER {$$ = $1;}
 %%
 int main()
 {
+	yy_scan_string("1+1");
     return yyparse();
 }
 

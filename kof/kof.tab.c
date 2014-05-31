@@ -1,4 +1,4 @@
-/* A Bison parser, made by GNU Bison 2.7.12-4996.  */
+/* A Bison parser, made by GNU Bison 2.7.1.  */
 
 /* Bison implementation for Yacc-like parsers in C
    
@@ -44,7 +44,7 @@
 #define YYBISON 1
 
 /* Bison version.  */
-#define YYBISON_VERSION "2.7.12-4996"
+#define YYBISON_VERSION "2.7.1"
 
 /* Skeleton name.  */
 #define YYSKELETON_NAME "yacc.c"
@@ -71,8 +71,12 @@ int yyparse(void);
 extern int yylex();
 extern int yyerror(const char* s);
 
+struct yy_buffer_state;
+typedef struct yy_buffer_state *YY_BUFFER_STATE;
+extern YY_BUFFER_STATE yy_scan_string (char*);
+
 /* Line 371 of yacc.c  */
-#line 76 "kof.tab.c"
+#line 80 "kof.tab.c"
 
 # ifndef YY_NULL
 #  if defined __cplusplus && 201103L <= __cplusplus
@@ -147,7 +151,7 @@ int yyparse ();
 /* Copy the second part of user declarations.  */
 
 /* Line 390 of yacc.c  */
-#line 151 "kof.tab.c"
+#line 155 "kof.tab.c"
 
 #ifdef short
 # undef short
@@ -447,8 +451,8 @@ static const yytype_int8 yyrhs[] =
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    10,    10,    12,    13,    14,    16,    17,    18,    20,
-      21
+       0,    14,    14,    16,    17,    18,    20,    21,    22,    24,
+      25
 };
 #endif
 
@@ -1335,61 +1339,61 @@ yyreduce:
     {
         case 2:
 /* Line 1787 of yacc.c  */
-#line 10 "kof.y"
+#line 14 "kof.y"
     {printf("%d/n",(yyvsp[(1) - (1)]));}
     break;
 
   case 3:
 /* Line 1787 of yacc.c  */
-#line 12 "kof.y"
+#line 16 "kof.y"
     {(yyval) = (yyvsp[(1) - (3)]) + (yyvsp[(3) - (3)]);}
     break;
 
   case 4:
 /* Line 1787 of yacc.c  */
-#line 13 "kof.y"
+#line 17 "kof.y"
     {(yyval) = (yyvsp[(1) - (3)]) - (yyvsp[(3) - (3)]);}
     break;
 
   case 5:
 /* Line 1787 of yacc.c  */
-#line 14 "kof.y"
+#line 18 "kof.y"
     {(yyval) = (yyvsp[(1) - (1)]);}
     break;
 
   case 6:
 /* Line 1787 of yacc.c  */
-#line 16 "kof.y"
+#line 20 "kof.y"
     {(yyval) = (yyvsp[(1) - (3)]) * (yyvsp[(3) - (3)]);}
     break;
 
   case 7:
 /* Line 1787 of yacc.c  */
-#line 17 "kof.y"
+#line 21 "kof.y"
     {(yyval) = (yyvsp[(1) - (3)])/(yyvsp[(3) - (3)]);}
     break;
 
   case 8:
 /* Line 1787 of yacc.c  */
-#line 18 "kof.y"
+#line 22 "kof.y"
     {(yyval) = (yyvsp[(1) - (1)]);}
     break;
 
   case 9:
 /* Line 1787 of yacc.c  */
-#line 20 "kof.y"
+#line 24 "kof.y"
     {(yyval) = (yyvsp[(1) - (1)]);}
     break;
 
   case 10:
 /* Line 1787 of yacc.c  */
-#line 21 "kof.y"
+#line 25 "kof.y"
     {(yyval) = (yyvsp[(2) - (3)]);}
     break;
 
 
 /* Line 1787 of yacc.c  */
-#line 1393 "kof.tab.c"
+#line 1397 "kof.tab.c"
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -1621,10 +1625,11 @@ yyreturn:
 
 
 /* Line 2050 of yacc.c  */
-#line 23 "kof.y"
+#line 27 "kof.y"
 
 int main()
 {
+	yy_scan_string("1+1");
     return yyparse();
 }
 
