@@ -55,6 +55,7 @@
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>$(SolutionDir)clc;$(IncludePath)</IncludePath>
     <SourcePath>$(SolutionDir)clc;$(SourcePath)</SourcePath>
+    <ExcludePath>$(SolutionDir)plain;$(ExcludePath)</ExcludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
