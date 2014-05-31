@@ -11,9 +11,5 @@ program:// 仍然是一个什么也不干的程序
 void yyerror(const char *s)
 {
 }
-int main()
-{
 
-        yyparse();
-        return 0;
-} 
+
