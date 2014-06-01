@@ -17,7 +17,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\clc.tab.c" />
-    <ClCompile Include="..\lex.yy.c" />
+    <ClCompile Include="..\clc.yy.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\clc.tab.h" />
