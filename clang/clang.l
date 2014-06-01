@@ -1,11 +1,12 @@
+%option nounistd
 %{
 #include <stdio.h>
 #include <ctype.h>
 #include <string.h>
 #define EOI 0
 #define NAME 1 /* identifier */
-#define STRING 2 /* string constant “......”*/
-#define ICON 3 /* integer or character constant*/
+#define STRING 2
+#define ICON 3
 #define FCON 4 /* floating point constant */
 #define PLUS 5 /* + */
 #define MINUS 6 /* - */
@@ -258,6 +259,7 @@ if(argc>=2)
 if((yyin=fopen(argv[1],"r"))==NULL)
 {printf("Can't open file %s\n",argv[1]);exit(0);}
 }
+yy_scan_string("int a;");
 while(c=yylex())
 {static j=0;
 if(c<200){writeout(c,yytext);j++;}

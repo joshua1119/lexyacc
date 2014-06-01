@@ -1,5 +1,6 @@
+#line 2 "clang.yy.c"
 
-#line 3 "lex.yy.c"
+#line 4 "clang.yy.c"
 
 #define  YY_INT_ALIGNED short int
 
@@ -611,14 +612,15 @@ goto find_rule; \
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
 #line 1 "clang.l"
-#line 2 "clang.l"
+#define YY_NO_UNISTD_H 1
+#line 3 "clang.l"
 #include <stdio.h>
 #include <ctype.h>
 #include <string.h>
 #define EOI 0
 #define NAME 1 /* identifier */
-#define STRING 2 /* string constant “......”*/
-#define ICON 3 /* integer or character constant*/
+#define STRING 2
+#define ICON 3
 #define FCON 4 /* floating point constant */
 #define PLUS 5 /* + */
 #define MINUS 6 /* - */
@@ -676,7 +678,7 @@ char *yytext;
 int idorkeyword(char *lx);
 /* The following definitions are macros */
 
-#line 680 "lex.yy.c"
+#line 682 "clang.yy.c"
 
 #define INITIAL 0
 #define COMMENT 1
@@ -859,9 +861,9 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
     
-#line 76 "clang.l"
+#line 77 "clang.l"
 
-#line 865 "lex.yy.c"
+#line 867 "clang.yy.c"
 
 	if ( !(yy_init) )
 		{
@@ -975,114 +977,114 @@ do_action:	/* This label is used only to access EOF actions. */
 	{ /* beginning of action switch */
 case 1:
 YY_RULE_SETUP
-#line 77 "clang.l"
+#line 78 "clang.l"
 {printf("%s",yytext);BEGIN COMMENT;}
 	YY_BREAK
 case 2:
 /* rule 2 can match eol */
 YY_RULE_SETUP
-#line 78 "clang.l"
+#line 79 "clang.l"
 {printf("%s",yytext);}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 79 "clang.l"
+#line 80 "clang.l"
 {printf("%s",yytext);BEGIN 0;}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 80 "clang.l"
+#line 81 "clang.l"
 {printf("%s",yytext);}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 81 "clang.l"
+#line 82 "clang.l"
 return STRING;
 	YY_BREAK
 case 6:
 /* rule 6 can match eol */
 YY_RULE_SETUP
-#line 82 "clang.l"
+#line 83 "clang.l"
 {printf("Adding missing\"to string constant\n");return STRING;}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 83 "clang.l"
+#line 84 "clang.l"
 return ICON; 
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 84 "clang.l"
+#line 85 "clang.l"
 return ICON;
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 85 "clang.l"
+#line 86 "clang.l"
 return ICON;
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 86 "clang.l"
+#line 87 "clang.l"
 return ICON;
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 87 "clang.l"
+#line 88 "clang.l"
 return ICON; 
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 88 "clang.l"
+#line 89 "clang.l"
 return ICON;
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 89 "clang.l"
+#line 90 "clang.l"
 return ICON; 
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 90 "clang.l"
+#line 91 "clang.l"
 return FCON;
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 91 "clang.l"
+#line 92 "clang.l"
 return LP;
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 92 "clang.l"
+#line 93 "clang.l"
 return RP;
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 93 "clang.l"
+#line 94 "clang.l"
 return LC;
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 94 "clang.l"
+#line 95 "clang.l"
 return RC;
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 95 "clang.l"
+#line 96 "clang.l"
 return LB;
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 96 "clang.l"
+#line 97 "clang.l"
 return RB;
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 97 "clang.l"
+#line 98 "clang.l"
 return STRUCTOP;
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 98 "clang.l"
+#line 99 "clang.l"
 return INCOP;
 	YY_BREAK
 case 23:
@@ -1090,131 +1092,131 @@ case 23:
 (yy_c_buf_p) = yy_cp = yy_bp + 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 99 "clang.l"
+#line 100 "clang.l"
 return DIVOP;
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 100 "clang.l"
+#line 101 "clang.l"
 return UNOP;
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 101 "clang.l"
+#line 102 "clang.l"
 return SHIFTOP;
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 102 "clang.l"
+#line 103 "clang.l"
 return RELOP;
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 103 "clang.l"
+#line 104 "clang.l"
 return EQUOP;
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 104 "clang.l"
+#line 105 "clang.l"
 return ASSIGNOP;
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 105 "clang.l"
+#line 106 "clang.l"
 return ASSIGNOP;
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 106 "clang.l"
+#line 107 "clang.l"
 return STAR;
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 107 "clang.l"
+#line 108 "clang.l"
 return PLUS;
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 108 "clang.l"
+#line 109 "clang.l"
 return MINUS;
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 109 "clang.l"
+#line 110 "clang.l"
 return EQUAL;
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 110 "clang.l"
+#line 111 "clang.l"
 return AND;
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 111 "clang.l"
+#line 112 "clang.l"
 return XOR;
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 112 "clang.l"
+#line 113 "clang.l"
 return OR;
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 113 "clang.l"
+#line 114 "clang.l"
 return ANDAND;
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 114 "clang.l"
+#line 115 "clang.l"
 return OROR;
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 115 "clang.l"
+#line 116 "clang.l"
 return QUEST;
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 116 "clang.l"
+#line 117 "clang.l"
 return COLON;
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 117 "clang.l"
+#line 118 "clang.l"
 return COMMA;
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 118 "clang.l"
+#line 119 "clang.l"
 return SEMI;
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 119 "clang.l"
+#line 120 "clang.l"
 return idorkeyword(yytext);
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 120 "clang.l"
+#line 121 "clang.l"
 return JINGHAO;
 	YY_BREAK
 case 45:
 /* rule 45 can match eol */
 YY_RULE_SETUP
-#line 121 "clang.l"
+#line 122 "clang.l"
 return WHITE;/* Ignore white space */
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
-#line 122 "clang.l"
+#line 123 "clang.l"
 {printf(" Invalid char %s\n",yytext);return ERRORCHAR;}
 	YY_BREAK
 case 47:
 YY_RULE_SETUP
-#line 124 "clang.l"
+#line 125 "clang.l"
 ECHO;
 	YY_BREAK
-#line 1218 "lex.yy.c"
+#line 1220 "clang.yy.c"
 			case YY_STATE_EOF(INITIAL):
 			case YY_STATE_EOF(COMMENT):
 				yyterminate();
@@ -2183,7 +2185,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 124 "clang.l"
+#line 125 "clang.l"
 
 
 /* beginning of auxiliary functions */
@@ -2322,6 +2324,7 @@ if(argc>=2)
 if((yyin=fopen(argv[1],"r"))==NULL)
 {printf("Can't open file %s\n",argv[1]);exit(0);}
 }
+yy_scan_string("int a;");
 while(c=yylex())
 {static j=0;
 if(c<200){writeout(c,yytext);j++;}
