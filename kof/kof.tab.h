@@ -52,7 +52,8 @@ extern int yydebug;
      SECTION_START = 261,
      SECTION_END = 262,
      ASSIGNMENT = 263,
-     NEW_LINE = 264
+     NEW_LINE = 264,
+     STRING_ACTION = 265
    };
 #endif
 
