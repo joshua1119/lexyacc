@@ -18,7 +18,7 @@ printf("%s",yytext);
 }
 
 {white}+ {
-printf("(white:%s;)",yytext);}
+}
 
 "["          {  
 BEGIN SECTION;

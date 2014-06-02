@@ -46,12 +46,11 @@ void yyerror(const char *s)
 /* The following functions are used only for testing */
 writeout(int c,char *text)
 {
-printf("(");
 switch(c)
 {
-case SECTION_START: printf("SECTION_START, %s ) ",text); break; 
-case SECTION_END: printf("SECTION_END, %s ) ",text); break; 
-case ASSIGNMENT: printf("ASSIGNMENT, %s ) ",text); break; 
+case STRING_SECTION: printf("STRING_SECTION:%s\n",text); break; 
+case STRING_KEY: printf("%s=",text); break; 
+case STRING_VALUE: printf("%s\n",text); break; 
 default:break;
 }
 }
@@ -62,5 +61,6 @@ void main(int argc,char **argv)
 	char *a="adaaa=bbbb\nbbb=sfd\n";
 	//yy_scan_string(a); 
     yyparse();
+	system("pause");
 	return;
 }
