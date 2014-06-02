@@ -69,13 +69,16 @@
 #include <ctype.h>
 #include <string.h>
 
+typedef char* string;
+#define YYSTYPE string
+
 extern char* yytext;
 void yyerror(const char *s);
 extern int yylex(void);// 为了能够在语法文件里面找到词法分析函数，必须声明
 
 
 /* Line 371 of yacc.c  */
-#line 79 "kof.tab.c"
+#line 82 "kof.tab.c"
 
 # ifndef YY_NULL
 #  if defined __cplusplus && 201103L <= __cplusplus
@@ -105,6 +108,21 @@ extern int yylex(void);// 为了能够在语法文件里面找到词法分析函数，必须声明
 extern int yydebug;
 #endif
 
+/* Tokens.  */
+#ifndef YYTOKENTYPE
+# define YYTOKENTYPE
+   /* Put the tokens into the symbol table, so that GDB and other debuggers
+      know about them.  */
+   enum yytokentype {
+     STRING_SECTION = 258,
+     STRING_KEY = 259,
+     STRING_VALUE = 260,
+     SECTION_START = 261,
+     SECTION_END = 262,
+     ASSIGNMENT = 263,
+     NEW_LINE = 264
+   };
+#endif
 
 
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
@@ -135,7 +153,7 @@ int yyparse ();
 /* Copy the second part of user declarations.  */
 
 /* Line 390 of yacc.c  */
-#line 139 "kof.tab.c"
+#line 157 "kof.tab.c"
 
 #ifdef short
 # undef short
@@ -362,22 +380,22 @@ union yyalloc
 #endif /* !YYCOPY_NEEDED */
 
 /* YYFINAL -- State number of the termination state.  */
-#define YYFINAL  2
+#define YYFINAL  9
 /* YYLAST -- Last index in YYTABLE.  */
-#define YYLAST   0
+#define YYLAST   11
 
 /* YYNTOKENS -- Number of terminals.  */
-#define YYNTOKENS  3
+#define YYNTOKENS  10
 /* YYNNTS -- Number of nonterminals.  */
-#define YYNNTS  2
+#define YYNNTS  5
 /* YYNRULES -- Number of rules.  */
-#define YYNRULES  2
+#define YYNRULES  7
 /* YYNRULES -- Number of states.  */
-#define YYNSTATES  3
+#define YYNSTATES  13
 
 /* YYTRANSLATE(YYLEX) -- Bison symbol number corresponding to YYLEX.  */
 #define YYUNDEFTOK  2
-#define YYMAXUTOK   257
+#define YYMAXUTOK   264
 
 #define YYTRANSLATE(YYX)						\
   ((unsigned int) (YYX) <= YYMAXUTOK ? yytranslate[YYX] : YYUNDEFTOK)
@@ -410,7 +428,8 @@ static const yytype_uint8 yytranslate[] =
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,     2,     2,     2,     1,     2
+       2,     2,     2,     2,     2,     2,     1,     2,     3,     4,
+       5,     6,     7,     8,     9
 };
 
 #if YYDEBUG
@@ -418,19 +437,20 @@ static const yytype_uint8 yytranslate[] =
    YYRHS.  */
 static const yytype_uint8 yyprhs[] =
 {
-       0,     0,     3
+       0,     0,     3,     6,     8,    10,    12,    16
 };
 
 /* YYRHS -- A `-1'-separated list of the rules' RHS.  */
 static const yytype_int8 yyrhs[] =
 {
-       4,     0,    -1,    -1
+      11,     0,    -1,    11,    12,    -1,    12,    -1,    13,    -1,
+      14,    -1,     6,     3,     7,    -1,     4,     8,     5,    -1
 };
 
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    12,    12
+       0,    19,    19,    20,    24,    25,    29,    34
 };
 #endif
 
@@ -439,7 +459,9 @@ static const yytype_uint8 yyrline[] =
    First, the terminals, then, starting at YYNTOKENS, nonterminals.  */
 static const char *const yytname[] =
 {
-  "$end", "error", "$undefined", "$accept", "program", YY_NULL
+  "$end", "error", "$undefined", "STRING_SECTION", "STRING_KEY",
+  "STRING_VALUE", "SECTION_START", "SECTION_END", "ASSIGNMENT", "NEW_LINE",
+  "$accept", "input", "line", "section", "value", YY_NULL
 };
 #endif
 
@@ -448,20 +470,20 @@ static const char *const yytname[] =
    token YYLEX-NUM.  */
 static const yytype_uint16 yytoknum[] =
 {
-       0,   256,   257
+       0,   256,   257,   258,   259,   260,   261,   262,   263,   264
 };
 # endif
 
 /* YYR1[YYN] -- Symbol number of symbol that rule YYN derives.  */
 static const yytype_uint8 yyr1[] =
 {
-       0,     3,     4
+       0,    10,    11,    11,    12,    12,    13,    14
 };
 
 /* YYR2[YYN] -- Number of symbols composing right hand side of rule YYN.  */
 static const yytype_uint8 yyr2[] =
 {
-       0,     2,     0
+       0,     2,     2,     1,     1,     1,     3,     3
 };
 
 /* YYDEFACT[STATE-NAME] -- Default reduction number in state STATE-NUM.
@@ -469,27 +491,29 @@ static const yytype_uint8 yyr2[] =
    means the default is an error.  */
 static const yytype_uint8 yydefact[] =
 {
-       2,     0,     1
+       0,     0,     0,     0,     3,     4,     5,     0,     0,     1,
+       2,     7,     6
 };
 
 /* YYDEFGOTO[NTERM-NUM].  */
 static const yytype_int8 yydefgoto[] =
 {
-      -1,     1
+      -1,     3,     4,     5,     6
 };
 
 /* YYPACT[STATE-NUM] -- Index in YYTABLE of the portion describing
    STATE-NUM.  */
-#define YYPACT_NINF -1
+#define YYPACT_NINF -7
 static const yytype_int8 yypact[] =
 {
-      -1,     0,    -1
+      -3,    -6,     2,     0,    -7,    -7,    -7,     3,     4,    -7,
+      -7,    -7,    -7
 };
 
 /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int8 yypgoto[] =
 {
-      -1,    -1
+      -7,    -7,     6,    -7,    -7
 };
 
 /* YYTABLE[YYPACT[STATE-NUM]].  What to do in state STATE-NUM.  If
@@ -498,25 +522,28 @@ static const yytype_int8 yypgoto[] =
 #define YYTABLE_NINF -1
 static const yytype_uint8 yytable[] =
 {
-       2
+       9,     1,     7,     2,     1,     8,     2,     0,    11,    10,
+       0,    12
 };
 
 #define yypact_value_is_default(Yystate) \
-  (!!((Yystate) == (-1)))
+  (!!((Yystate) == (-7)))
 
 #define yytable_value_is_error(Yytable_value) \
   YYID (0)
 
-static const yytype_uint8 yycheck[] =
+static const yytype_int8 yycheck[] =
 {
-       0
+       0,     4,     8,     6,     4,     3,     6,    -1,     5,     3,
+      -1,     7
 };
 
 /* YYSTOS[STATE-NUM] -- The (internal number of the) accessing
    symbol of state STATE-NUM.  */
 static const yytype_uint8 yystos[] =
 {
-       0,     4,     0
+       0,     4,     6,    11,    12,    13,    14,     8,     3,     0,
+      12,     5,     7
 };
 
 #define yyerrok		(yyerrstatus = 0)
@@ -1307,9 +1334,25 @@ yyreduce:
   YY_REDUCE_PRINT (yyn);
   switch (yyn)
     {
-      
+        case 6:
 /* Line 1787 of yacc.c  */
-#line 1313 "kof.tab.c"
+#line 29 "kof.y"
+    { 
+	writeout(STRING_SECTION,(yyvsp[(2) - (3)]));}
+    break;
+
+  case 7:
+/* Line 1787 of yacc.c  */
+#line 34 "kof.y"
+    { 
+	writeout(STRING_KEY,(yyvsp[(1) - (3)]));
+	writeout(STRING_VALUE,(yyvsp[(3) - (3)]));
+	}
+    break;
+
+
+/* Line 1787 of yacc.c  */
+#line 1356 "kof.tab.c"
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -1541,12 +1584,11 @@ yyreturn:
 
 
 /* Line 2050 of yacc.c  */
-#line 14 "kof.y"
+#line 40 "kof.y"
 
 void yyerror(const char *s)
 {
 }
-
 
 
 /* The following functions are used only for testing */
@@ -1555,61 +1597,9 @@ writeout(int c,char *text)
 printf("(");
 switch(c)
 {
-case 0: printf("EOI, %s ) ",text); break;
-case 1: printf("NAME, %s ) ",text); break;
-case 2: printf("STRING, %s ) ",text); break;
-case 3: printf("ICON, %s ) ",text); break; 
-case 4: printf("FCON, %s ) ",text); break; 
-case 5: printf("PLUS, %s ) ",text); break; 
-case 6: printf("MINUS, %s ) ",text); break;
-case 7: printf("STAR, %s ) ",text); break; 
-case 8: printf("AND, %s ) ",text); break; 
-case 9: printf("QUEST, %s ) ",text); break; 
-case 10: printf("COLON, %s ) ",text); break; 
-case 11: printf("ANDAND, %s ) ",text); break;
-case 12: printf("OROR, %s ) ",text); break;
-case 13: printf("RELOP, %s ) ",text); break;
-case 14: printf("EQUOP, %s ) ",text); break; 
-case 15: printf("DIVOP, %s ) ",text); break; 
-case 16: printf("OR, %s ) ",text); break; 
-case 17: printf("XOR, %s ) ",text); break; 
-case 18: printf("SHIFTOP, %s ) ",text); break; 
-case 19: printf("INCOP, %s ) ",text); break; 
-case 20: printf("UNOP, %s ) ",text); break; 
-case 21: printf("STRUCTOP, %s ) ",text); break; 
-case 22: printf("TYPE, %s ) ",text); break; 
-case 23: printf("CLASS, %s ) ",text); break; 
-case 24: printf("STRUCT, %s ) ",text); break; 
-case 25: printf("RETURN, %s ) ",text); break; 
-case 26: printf("GOTO, %s ) ",text); break; 
-case 27: printf("IF, %s ) ",text); break; 
-case 28: printf("ELSE, %s ) ",text); break; 
-case 29: printf("SWITCH, %s ) ",text); break; 
-case 30: printf("BREAK, %s ) ",text); break; 
-case 31: printf("CONTINUE, %s ) ",text); break; 
-case 32: printf("WHILE, %s ) ",text); break; 
-case 33: printf("DO, %s ) ",text); break; 
-case 34: printf("FOR, %s ) ",text); break; 
-case 35: printf("DEFAULT, %s ) ",text); break;
-case 36: printf("CASE, %s ) ",text); break; 
-case 37: printf("SIZEOF, %s ) ",text); break; 
-case 38: printf("LP, %s ) ",text); break; 
-case 39: printf("RP, %s ) ",text); break; 
-case 40: printf("LC, %s ) ",text); break; 
-case 41: printf("RC, %s ) ",text); break; 
-case 42: printf("LB, %s ) ",text); break; 
-case 43: printf("RB, %s ) ",text); break; 
-case 44: printf("COMMA, %s ) ",text); break;
-case 45: printf("SEMI, %s )\n",text); break; 
-case 46: printf("EQUAL, %s ) ",text); break; 
-case 47: printf("ASSIGNOP, %s ) ",text); break; 
-/* The following definitions are used for preprocess symbols */
-case 48: printf("JINGHAO, %s ) ",text); break;
-case 49: printf("INCLUDE, %s ) ",text); break;
-case 50: printf("DEFINE, %s ) ",text); break; 
-case 51: printf("IFDEF, %s ) ",text); break;
-case 52: printf("IFNDEF, %s ) ",text); break; 
-case 53: printf("ENDIF, %s ) ",text); break; 
+case SECTION_START: printf("SECTION_START, %s ) ",text); break; 
+case SECTION_END: printf("SECTION_END, %s ) ",text); break; 
+case ASSIGNMENT: printf("ASSIGNMENT, %s ) ",text); break; 
 default:break;
 }
 }
@@ -1617,22 +1607,8 @@ default:break;
 void main(int argc,char **argv)
 {
 	int c;
-	char *a="int a;\"ad\";12;012;0x12;1.2;1.2f;(){}[];.->++--/%~!;<<>><=>=!===;\
-+=-=*=/=%=&=|=^=>>=<<=;\
-*+-;=&^|&&||?:,;\
-a12a# #;\
-\t\t;";
-	yy_scan_string(a); 
-	while(c=yylex())
-	{
-		static j=0;
-		if(c<200)
-			{
-				writeout(c,yytext);
-				j++;
-			}
-		else 
-			continue;
-	}
+	char *a="adaaa=bbbb\nbbb=sfd\n";
+	//yy_scan_string(a); 
+    yyparse();
 	return;
 }

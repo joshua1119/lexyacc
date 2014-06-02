@@ -2,7 +2,7 @@ LEX=flex
 YACC=bison
 CC=gcc
 all:a.exe
-	./a.exe
+	./a.exe <iori.cns
 a.exe:kof.yy.o kof.tab.o
 	$(CC) -g kof.yy.o kof.tab.o -o a.exe
 	
