@@ -1,8 +1,11 @@
 LEX=flex
 YACC=bison
 CC=gcc
-all:kof.yy.o kof.tab.o
+all:a.exe
+	./a.exe
+a.exe:kof.yy.o kof.tab.o
 	$(CC) -g kof.yy.o kof.tab.o -o a.exe
+	
 kof.yy.o:kof.yy.c kof.tab.h
 	$(CC) -c kof.yy.c
 kof.tab.o:kof.tab.c

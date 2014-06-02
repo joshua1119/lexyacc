@@ -1,7 +1,9 @@
 LEX=flex
 YACC=bison
 CC=gcc
-all:clang.yy.o clang.tab.o
+all:a.exe
+	./a.exe
+a.exe:clang.yy.o clang.tab.o
 	$(CC) -g clang.yy.o clang.tab.o -o a.exe
 clang.yy.o:clang.yy.c clang.tab.h
 	$(CC) -c clang.yy.c
