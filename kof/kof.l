@@ -15,7 +15,8 @@ ActionSection (Begin\040+Action\040+[0-9]+)|(SimulFace)
 
 NormalSection (Statedef\s+[0-9]+)|(State[^\]]+)|(Data)|(Size)|(Velocity)|(Movement)
 
-%start SECTION SECTION_KEY SECTION_ASSIGN SECTION_VALUE SECTION_ACTION
+%start L_SECTION_start L_SECTION_end  L_SECTION_str L_SECTION_act L_newline
+%start L_SECTION_assignment L_SECTION_key L_SECTION_value 
 
 %%
 ;.*\n {
@@ -25,45 +26,32 @@ printf("%s",yytext);
 {white}+ {
 }
 
-<SECTION>{ActionSection} {
-yylval = strdup(yytext); 
-BEGIN SECTION_ACTION;
-return STRING_SECTION; 
-}
-
-<SECTION_ACTION>{number}+        { 
-return  SECTION_END;}
-
-<SECTION_ACTION>"]"          { 
- BEGIN SECTION_KEY;
-return  SECTION_END;}
 
 
 "["          {  
-BEGIN SECTION;
-return SECTION_START; }
+BEGIN L_SECTION_start;
+return Y_SECTION_start; }
 
-<SECTION>{NormalSection}  { 
+<L_SECTION_start>{NormalSection}  { 
 yylval = strdup(yytext); 
-return STRING_SECTION; 
+return Y_SECTION_str; 
 }
 
 
+<L_SECTION_start>"]"          { 
+ BEGIN L_SECTION_key;
+return  Y_SECTION_key;}
 
-<SECTION>"]"          { 
- BEGIN SECTION_KEY;
-return  SECTION_END;}
 
-
-<SECTION_KEY>[^\=\[\;\n]+ {
+<L_SECTION_key>[^\=\[\;\n]+ {
 yylval = strdup(yytext); 
-BEGIN SECTION_ASSIGN;
-return STRING_KEY; 
+BEGIN L_SECTION_key;
+return L_SECTION_key; 
 }
 
-<SECTION_ASSIGN>"="          { 
-BEGIN SECTION_VALUE;
-return ASSIGNMENT; }
+<L_SECTION_key>"="          { 
+BEGIN L_SECTION_assignment;
+return Y_SECTION_assignment; }
 
 <SECTION_VALUE>[^\;\n]+  {
 yylval = strdup(yytext); 
