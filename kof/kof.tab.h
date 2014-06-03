@@ -1,4 +1,4 @@
-/* A Bison parser, made by GNU Bison 2.7.1.  */
+/* A Bison parser, made by GNU Bison 2.7.12-4996.  */
 
 /* Bison interface for Yacc-like parsers in C
    
@@ -46,14 +46,14 @@ extern int yydebug;
    /* Put the tokens into the symbol table, so that GDB and other debuggers
       know about them.  */
    enum yytokentype {
-     STRING_SECTION = 258,
-     STRING_KEY = 259,
-     STRING_VALUE = 260,
-     SECTION_START = 261,
-     SECTION_END = 262,
-     ASSIGNMENT = 263,
-     NEW_LINE = 264,
-     STRING_ACTION = 265
+     Y_SECTION_start = 258,
+     Y_SECTION_end = 259,
+     Y_SECTION_str = 260,
+     Y_SECTION_act = 261,
+     Y_newline = 262,
+     Y_SECTION_assignment = 263,
+     Y_SECTION_key = 264,
+     Y_SECTION_value = 265
    };
 #endif
 

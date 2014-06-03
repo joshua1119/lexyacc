@@ -51,6 +51,7 @@ writeout(int c,char *text)
 {
 switch(c)
 {
+case Y_SECTION_str:printf("Y_SECTION_str %s\n", text);break;
 default:break;
 }
 }

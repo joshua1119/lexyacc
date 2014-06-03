@@ -1,4 +1,4 @@
-/* A Bison parser, made by GNU Bison 2.7.1.  */
+/* A Bison parser, made by GNU Bison 2.7.12-4996.  */
 
 /* Bison implementation for Yacc-like parsers in C
    
@@ -44,7 +44,7 @@
 #define YYBISON 1
 
 /* Bison version.  */
-#define YYBISON_VERSION "2.7.1"
+#define YYBISON_VERSION "2.7.12-4996"
 
 /* Skeleton name.  */
 #define YYSKELETON_NAME "yacc.c"
@@ -114,14 +114,14 @@ extern int yydebug;
    /* Put the tokens into the symbol table, so that GDB and other debuggers
       know about them.  */
    enum yytokentype {
-     STRING_SECTION = 258,
-     STRING_KEY = 259,
-     STRING_VALUE = 260,
-     SECTION_START = 261,
-     SECTION_END = 262,
-     ASSIGNMENT = 263,
-     NEW_LINE = 264,
-     STRING_ACTION = 265
+     Y_SECTION_start = 258,
+     Y_SECTION_end = 259,
+     Y_SECTION_str = 260,
+     Y_SECTION_act = 261,
+     Y_newline = 262,
+     Y_SECTION_assignment = 263,
+     Y_SECTION_key = 264,
+     Y_SECTION_value = 265
    };
 #endif
 
@@ -383,7 +383,7 @@ union yyalloc
 /* YYFINAL -- State number of the termination state.  */
 #define YYFINAL  10
 /* YYLAST -- Last index in YYTABLE.  */
-#define YYLAST   12
+#define YYLAST   11
 
 /* YYNTOKENS -- Number of terminals.  */
 #define YYNTOKENS  11
@@ -445,8 +445,8 @@ static const yytype_uint8 yyprhs[] =
 static const yytype_int8 yyrhs[] =
 {
       12,     0,    -1,    12,    13,    -1,    13,    -1,    14,    -1,
-      15,    -1,     6,     3,     7,    -1,     6,    10,     7,    -1,
-       4,     8,     5,    -1
+      15,    -1,     3,     5,     4,    -1,     3,     6,     4,    -1,
+       9,     8,    10,    -1
 };
 
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
@@ -461,9 +461,10 @@ static const yytype_uint8 yyrline[] =
    First, the terminals, then, starting at YYNTOKENS, nonterminals.  */
 static const char *const yytname[] =
 {
-  "$end", "error", "$undefined", "STRING_SECTION", "STRING_KEY",
-  "STRING_VALUE", "SECTION_START", "SECTION_END", "ASSIGNMENT", "NEW_LINE",
-  "STRING_ACTION", "$accept", "input", "line", "section", "value", YY_NULL
+  "$end", "error", "$undefined", "Y_SECTION_start", "Y_SECTION_end",
+  "Y_SECTION_str", "Y_SECTION_act", "Y_newline", "Y_SECTION_assignment",
+  "Y_SECTION_key", "Y_SECTION_value", "$accept", "input", "line",
+  "section", "value", YY_NULL
 };
 #endif
 
@@ -495,7 +496,7 @@ static const yytype_uint8 yyr2[] =
 static const yytype_uint8 yydefact[] =
 {
        0,     0,     0,     0,     3,     4,     5,     0,     0,     0,
-       1,     2,     8,     6,     7
+       1,     2,     6,     7,     8
 };
 
 /* YYDEFGOTO[NTERM-NUM].  */
@@ -506,17 +507,17 @@ static const yytype_int8 yydefgoto[] =
 
 /* YYPACT[STATE-NUM] -- Index in YYTABLE of the portion describing
    STATE-NUM.  */
-#define YYPACT_NINF -8
+#define YYPACT_NINF -7
 static const yytype_int8 yypact[] =
 {
-      -1,    -7,    -3,     2,    -8,    -8,    -8,     4,     3,     5,
-      -8,    -8,    -8,    -8,    -8
+      -2,    -1,    -6,     0,    -7,    -7,    -7,     2,     4,     1,
+      -7,    -7,    -7,    -7,    -7
 };
 
 /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int8 yypgoto[] =
 {
-      -8,    -8,     1,    -8,    -8
+      -7,    -7,     7,    -7,    -7
 };
 
 /* YYTABLE[YYPACT[STATE-NUM]].  What to do in state STATE-NUM.  If
@@ -525,28 +526,28 @@ static const yytype_int8 yypgoto[] =
 #define YYTABLE_NINF -1
 static const yytype_uint8 yytable[] =
 {
-       8,     7,    10,     1,    11,     2,     1,     9,     2,    12,
-      13,     0,    14
+      10,     1,     9,     1,     7,     8,    12,     2,    13,     2,
+      11,    14
 };
 
 #define yypact_value_is_default(Yystate) \
-  (!!((Yystate) == (-8)))
+  (!!((Yystate) == (-7)))
 
 #define yytable_value_is_error(Yytable_value) \
   YYID (0)
 
-static const yytype_int8 yycheck[] =
+static const yytype_uint8 yycheck[] =
 {
-       3,     8,     0,     4,     3,     6,     4,    10,     6,     5,
-       7,    -1,     7
+       0,     3,     8,     3,     5,     6,     4,     9,     4,     9,
+       3,    10
 };
 
 /* YYSTOS[STATE-NUM] -- The (internal number of the) accessing
    symbol of state STATE-NUM.  */
 static const yytype_uint8 yystos[] =
 {
-       0,     4,     6,    12,    13,    14,    15,     8,     3,    10,
-       0,    13,     5,     7,     7
+       0,     3,     9,    12,    13,    14,    15,     5,     6,     8,
+       0,    13,     4,     4,    10
 };
 
 #define yyerrok		(yyerrstatus = 0)
@@ -1341,28 +1342,28 @@ yyreduce:
 /* Line 1787 of yacc.c  */
 #line 30 "kof.y"
     { 
-	writeout(STRING_SECTION,(yyvsp[(2) - (3)]));}
+	writeout(Y_SECTION_str,(yyvsp[(2) - (3)]));}
     break;
 
   case 7:
 /* Line 1787 of yacc.c  */
 #line 32 "kof.y"
     { 
-	writeout(STRING_ACTION,(yyvsp[(2) - (3)]));}
+	writeout(Y_SECTION_act,(yyvsp[(2) - (3)]));}
     break;
 
   case 8:
 /* Line 1787 of yacc.c  */
 #line 37 "kof.y"
     { 
-	writeout(STRING_KEY,(yyvsp[(1) - (3)]));
-	writeout(STRING_VALUE,(yyvsp[(3) - (3)]));
+	writeout(Y_SECTION_key,(yyvsp[(1) - (3)]));
+	writeout(Y_SECTION_value,(yyvsp[(3) - (3)]));
 	}
     break;
 
 
 /* Line 1787 of yacc.c  */
-#line 1366 "kof.tab.c"
+#line 1367 "kof.tab.c"
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -1606,10 +1607,7 @@ writeout(int c,char *text)
 {
 switch(c)
 {
-case STRING_ACTION: printf("STRING_ACTION:%s\n",text); break; 
-case STRING_SECTION: printf("STRING_SECTION:%s\n",text); break; 
-case STRING_KEY: printf("%s=",text); break; 
-case STRING_VALUE: printf("%s\n",text); break; 
+case Y_SECTION_str:printf("Y_SECTION_str %s\n", text);break;
 default:break;
 }
 }
