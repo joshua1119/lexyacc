@@ -60,8 +60,9 @@ extern int yydebug;
      air_num = 269,
      air_left = 270,
      air_right = 271,
-     air_dot = 272,
-     air_equal = 273
+     air_colon = 272,
+     air_dot = 273,
+     air_equal = 274
    };
 #endif
 

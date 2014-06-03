@@ -14,7 +14,7 @@ extern int yylex(void);// 为了能够在语法文件里面找到词法分析函数，必须声明
 
 %token Y_SECTION_start Y_SECTION_end  Y_SECTION_str  Y_newline
 %token Y_SECTION_assignment Y_SECTION_key Y_SECTION_value 
-%token  Y_act_end Y_act Y_act_num air_str air_num air_left air_right air_dot air_equal
+%token  Y_act_end Y_act Y_act_num air_str air_num air_left air_right air_colon air_dot air_equal
 
 %%
 
@@ -40,9 +40,19 @@ value
 	writeout(Y_SECTION_key,$1);
 	writeout(Y_SECTION_value,$3);
 	}
-	| air_str air_num air_dot air_num air_str air_num air_left air_num air_right air_equal airvalue air_num aireffet{ 
+	| airclsn airvalue{ 
 	writeout(Y_act_num,$2);}
 	;
+
+airclsn
+	: airclsn air_str air_colon air_num{ 
+	writeout(Y_act_num,$1);}
+	;
+
+airclsnvalue:airclsnvalue air_str air_left air_num air_right air_equal air_num air_dot air_num air_dot air_num air_dot air_num{
+	writeout(Y_act_num,$1);}
+	;
+
 airvalue
 	: airvalue air_num air_dot{
 	}
@@ -58,22 +68,4 @@ void yyerror(const char *s)
 }
 
 
-/* The following functions are used only for testing */
-writeout(int c,char *text)
-{
-switch(c)
-{
-case Y_SECTION_str:printf("Y_SECTION_str %s\n", text);break;
-default:break;
-}
-}
 
-void main(int argc,char **argv)
-{
-	int c;
-	char *a="adaaa=bbbb\nbbb=sfd\n";
-	//yy_scan_string(a); 
-    yyparse();
-	system("pause");
-	return;
-}

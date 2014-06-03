@@ -128,8 +128,9 @@ extern int yydebug;
      air_num = 269,
      air_left = 270,
      air_right = 271,
-     air_dot = 272,
-     air_equal = 273
+     air_colon = 272,
+     air_dot = 273,
+     air_equal = 274
    };
 #endif
 
@@ -162,7 +163,7 @@ int yyparse ();
 /* Copy the second part of user declarations.  */
 
 /* Line 390 of yacc.c  */
-#line 166 "kof.tab.c"
+#line 167 "kof.tab.c"
 
 #ifdef short
 # undef short
@@ -394,7 +395,7 @@ union yyalloc
 #define YYLAST   11
 
 /* YYNTOKENS -- Number of terminals.  */
-#define YYNTOKENS  19
+#define YYNTOKENS  20
 /* YYNNTS -- Number of nonterminals.  */
 #define YYNNTS  5
 /* YYNRULES -- Number of rules.  */
@@ -404,7 +405,7 @@ union yyalloc
 
 /* YYTRANSLATE(YYLEX) -- Bison symbol number corresponding to YYLEX.  */
 #define YYUNDEFTOK  2
-#define YYMAXUTOK   273
+#define YYMAXUTOK   274
 
 #define YYTRANSLATE(YYX)						\
   ((unsigned int) (YYX) <= YYMAXUTOK ? yytranslate[YYX] : YYUNDEFTOK)
@@ -439,7 +440,7 @@ static const yytype_uint8 yytranslate[] =
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     1,     2,     3,     4,
        5,     6,     7,     8,     9,    10,    11,    12,    13,    14,
-      15,    16,    17,    18
+      15,    16,    17,    18,    19
 };
 
 #if YYDEBUG
@@ -453,8 +454,8 @@ static const yytype_uint8 yyprhs[] =
 /* YYRHS -- A `-1'-separated list of the rules' RHS.  */
 static const yytype_int8 yyrhs[] =
 {
-      20,     0,    -1,    20,    21,    -1,    21,    -1,    22,    -1,
-      23,    -1,     3,     5,     4,    -1,     3,    12,    10,    -1,
+      21,     0,    -1,    21,    22,    -1,    22,    -1,    23,    -1,
+      24,    -1,     3,     5,     4,    -1,     3,    12,    10,    -1,
        8,     7,     9,    -1
 };
 
@@ -473,8 +474,8 @@ static const char *const yytname[] =
   "$end", "error", "$undefined", "Y_SECTION_start", "Y_SECTION_end",
   "Y_SECTION_str", "Y_newline", "Y_SECTION_assignment", "Y_SECTION_key",
   "Y_SECTION_value", "Y_act_end", "Y_act", "Y_act_num", "air_str",
-  "air_num", "air_left", "air_right", "air_dot", "air_equal", "$accept",
-  "input", "line", "section", "value", YY_NULL
+  "air_num", "air_left", "air_right", "air_colon", "air_dot", "air_equal",
+  "$accept", "input", "line", "section", "value", YY_NULL
 };
 #endif
 
@@ -484,14 +485,14 @@ static const char *const yytname[] =
 static const yytype_uint16 yytoknum[] =
 {
        0,   256,   257,   258,   259,   260,   261,   262,   263,   264,
-     265,   266,   267,   268,   269,   270,   271,   272,   273
+     265,   266,   267,   268,   269,   270,   271,   272,   273,   274
 };
 # endif
 
 /* YYR1[YYN] -- Symbol number of symbol that rule YYN derives.  */
 static const yytype_uint8 yyr1[] =
 {
-       0,    19,    20,    20,    21,    21,    22,    22,    23
+       0,    20,    21,    21,    22,    22,    23,    23,    24
 };
 
 /* YYR2[YYN] -- Number of symbols composing right hand side of rule YYN.  */
@@ -556,8 +557,8 @@ static const yytype_uint8 yycheck[] =
    symbol of state STATE-NUM.  */
 static const yytype_uint8 yystos[] =
 {
-       0,     3,     8,    20,    21,    22,    23,     5,    12,     7,
-       0,    21,     4,    10,     9
+       0,     3,     8,    21,    22,    23,    24,     5,    12,     7,
+       0,    22,     4,    10,     9
 };
 
 #define yyerrok		(yyerrstatus = 0)
@@ -1373,7 +1374,7 @@ yyreduce:
 
 
 /* Line 1787 of yacc.c  */
-#line 1377 "kof.tab.c"
+#line 1378 "kof.tab.c"
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -1605,29 +1606,11 @@ yyreturn:
 
 
 /* Line 2050 of yacc.c  */
-#line 55 "kof.y"
+#line 65 "kof.y"
 
 void yyerror(const char *s)
 {
 }
 
 
-/* The following functions are used only for testing */
-writeout(int c,char *text)
-{
-switch(c)
-{
-case Y_SECTION_str:printf("Y_SECTION_str %s\n", text);break;
-default:break;
-}
-}
 
-void main(int argc,char **argv)
-{
-	int c;
-	char *a="adaaa=bbbb\nbbb=sfd\n";
-	//yy_scan_string(a); 
-    yyparse();
-	system("pause");
-	return;
-}
