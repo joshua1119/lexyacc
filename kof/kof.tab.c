@@ -117,11 +117,19 @@ extern int yydebug;
      Y_SECTION_start = 258,
      Y_SECTION_end = 259,
      Y_SECTION_str = 260,
-     Y_SECTION_act = 261,
-     Y_newline = 262,
-     Y_SECTION_assignment = 263,
-     Y_SECTION_key = 264,
-     Y_SECTION_value = 265
+     Y_newline = 261,
+     Y_SECTION_assignment = 262,
+     Y_SECTION_key = 263,
+     Y_SECTION_value = 264,
+     Y_act_end = 265,
+     Y_act = 266,
+     Y_act_num = 267,
+     air_str = 268,
+     air_num = 269,
+     air_left = 270,
+     air_right = 271,
+     air_dot = 272,
+     air_equal = 273
    };
 #endif
 
@@ -154,7 +162,7 @@ int yyparse ();
 /* Copy the second part of user declarations.  */
 
 /* Line 390 of yacc.c  */
-#line 158 "kof.tab.c"
+#line 166 "kof.tab.c"
 
 #ifdef short
 # undef short
@@ -386,7 +394,7 @@ union yyalloc
 #define YYLAST   11
 
 /* YYNTOKENS -- Number of terminals.  */
-#define YYNTOKENS  11
+#define YYNTOKENS  19
 /* YYNNTS -- Number of nonterminals.  */
 #define YYNNTS  5
 /* YYNRULES -- Number of rules.  */
@@ -396,7 +404,7 @@ union yyalloc
 
 /* YYTRANSLATE(YYLEX) -- Bison symbol number corresponding to YYLEX.  */
 #define YYUNDEFTOK  2
-#define YYMAXUTOK   265
+#define YYMAXUTOK   273
 
 #define YYTRANSLATE(YYX)						\
   ((unsigned int) (YYX) <= YYMAXUTOK ? yytranslate[YYX] : YYUNDEFTOK)
@@ -430,7 +438,8 @@ static const yytype_uint8 yytranslate[] =
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     1,     2,     3,     4,
-       5,     6,     7,     8,     9,    10
+       5,     6,     7,     8,     9,    10,    11,    12,    13,    14,
+      15,    16,    17,    18
 };
 
 #if YYDEBUG
@@ -444,15 +453,15 @@ static const yytype_uint8 yyprhs[] =
 /* YYRHS -- A `-1'-separated list of the rules' RHS.  */
 static const yytype_int8 yyrhs[] =
 {
-      12,     0,    -1,    12,    13,    -1,    13,    -1,    14,    -1,
-      15,    -1,     3,     5,     4,    -1,     3,     6,     4,    -1,
-       9,     8,    10,    -1
+      20,     0,    -1,    20,    21,    -1,    21,    -1,    22,    -1,
+      23,    -1,     3,     5,     4,    -1,     3,    12,    10,    -1,
+       8,     7,     9,    -1
 };
 
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    20,    20,    21,    25,    26,    30,    32,    37
+       0,    22,    22,    23,    27,    28,    32,    34,    39
 };
 #endif
 
@@ -462,9 +471,10 @@ static const yytype_uint8 yyrline[] =
 static const char *const yytname[] =
 {
   "$end", "error", "$undefined", "Y_SECTION_start", "Y_SECTION_end",
-  "Y_SECTION_str", "Y_SECTION_act", "Y_newline", "Y_SECTION_assignment",
-  "Y_SECTION_key", "Y_SECTION_value", "$accept", "input", "line",
-  "section", "value", YY_NULL
+  "Y_SECTION_str", "Y_newline", "Y_SECTION_assignment", "Y_SECTION_key",
+  "Y_SECTION_value", "Y_act_end", "Y_act", "Y_act_num", "air_str",
+  "air_num", "air_left", "air_right", "air_dot", "air_equal", "$accept",
+  "input", "line", "section", "value", YY_NULL
 };
 #endif
 
@@ -474,14 +484,14 @@ static const char *const yytname[] =
 static const yytype_uint16 yytoknum[] =
 {
        0,   256,   257,   258,   259,   260,   261,   262,   263,   264,
-     265
+     265,   266,   267,   268,   269,   270,   271,   272,   273
 };
 # endif
 
 /* YYR1[YYN] -- Symbol number of symbol that rule YYN derives.  */
 static const yytype_uint8 yyr1[] =
 {
-       0,    11,    12,    12,    13,    13,    14,    14,    15
+       0,    19,    20,    20,    21,    21,    22,    22,    23
 };
 
 /* YYR2[YYN] -- Number of symbols composing right hand side of rule YYN.  */
@@ -510,14 +520,14 @@ static const yytype_int8 yydefgoto[] =
 #define YYPACT_NINF -7
 static const yytype_int8 yypact[] =
 {
-      -2,    -1,    -6,     0,    -7,    -7,    -7,     2,     4,     1,
+      -2,    -3,     3,     0,    -7,    -7,    -7,     1,    -6,     2,
       -7,    -7,    -7,    -7,    -7
 };
 
 /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int8 yypgoto[] =
 {
-      -7,    -7,     7,    -7,    -7
+      -7,    -7,     4,    -7,    -7
 };
 
 /* YYTABLE[YYPACT[STATE-NUM]].  What to do in state STATE-NUM.  If
@@ -526,8 +536,8 @@ static const yytype_int8 yypgoto[] =
 #define YYTABLE_NINF -1
 static const yytype_uint8 yytable[] =
 {
-      10,     1,     9,     1,     7,     8,    12,     2,    13,     2,
-      11,    14
+      10,     1,     7,     1,    13,    12,     2,    11,     2,     8,
+       9,    14
 };
 
 #define yypact_value_is_default(Yystate) \
@@ -538,16 +548,16 @@ static const yytype_uint8 yytable[] =
 
 static const yytype_uint8 yycheck[] =
 {
-       0,     3,     8,     3,     5,     6,     4,     9,     4,     9,
-       3,    10
+       0,     3,     5,     3,    10,     4,     8,     3,     8,    12,
+       7,     9
 };
 
 /* YYSTOS[STATE-NUM] -- The (internal number of the) accessing
    symbol of state STATE-NUM.  */
 static const yytype_uint8 yystos[] =
 {
-       0,     3,     9,    12,    13,    14,    15,     5,     6,     8,
-       0,    13,     4,     4,    10
+       0,     3,     8,    20,    21,    22,    23,     5,    12,     7,
+       0,    21,     4,    10,     9
 };
 
 #define yyerrok		(yyerrstatus = 0)
@@ -1340,21 +1350,21 @@ yyreduce:
     {
         case 6:
 /* Line 1787 of yacc.c  */
-#line 30 "kof.y"
+#line 32 "kof.y"
     { 
 	writeout(Y_SECTION_str,(yyvsp[(2) - (3)]));}
     break;
 
   case 7:
 /* Line 1787 of yacc.c  */
-#line 32 "kof.y"
+#line 34 "kof.y"
     { 
-	writeout(Y_SECTION_act,(yyvsp[(2) - (3)]));}
+	writeout(Y_act_num,(yyvsp[(2) - (3)]));}
     break;
 
   case 8:
 /* Line 1787 of yacc.c  */
-#line 37 "kof.y"
+#line 39 "kof.y"
     { 
 	writeout(Y_SECTION_key,(yyvsp[(1) - (3)]));
 	writeout(Y_SECTION_value,(yyvsp[(3) - (3)]));
@@ -1363,7 +1373,7 @@ yyreduce:
 
 
 /* Line 1787 of yacc.c  */
-#line 1367 "kof.tab.c"
+#line 1377 "kof.tab.c"
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -1595,7 +1605,7 @@ yyreturn:
 
 
 /* Line 2050 of yacc.c  */
-#line 43 "kof.y"
+#line 55 "kof.y"
 
 void yyerror(const char *s)
 {

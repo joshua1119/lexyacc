@@ -49,11 +49,19 @@ extern int yydebug;
      Y_SECTION_start = 258,
      Y_SECTION_end = 259,
      Y_SECTION_str = 260,
-     Y_SECTION_act = 261,
-     Y_newline = 262,
-     Y_SECTION_assignment = 263,
-     Y_SECTION_key = 264,
-     Y_SECTION_value = 265
+     Y_newline = 261,
+     Y_SECTION_assignment = 262,
+     Y_SECTION_key = 263,
+     Y_SECTION_value = 264,
+     Y_act_end = 265,
+     Y_act = 266,
+     Y_act_num = 267,
+     air_str = 268,
+     air_num = 269,
+     air_left = 270,
+     air_right = 271,
+     air_dot = 272,
+     air_equal = 273
    };
 #endif
 
