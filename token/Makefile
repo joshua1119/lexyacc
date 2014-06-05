@@ -5,9 +5,9 @@ all:a.exe
 	./a.exe
 a.exe:token.yy.o
 	$(CC) -g token.yy.o -o a.exe
-token.yy.o:token.yy.cpp
-	$(CC) -c token.yy.cpp
-token.yy.cpp:token.l
-	$(LEX) -otoken.yy.cpp token.l
+token.yy.o:token.yy.c
+	$(CC) -c token.yy.c
+token.yy.c:token.l
+	$(LEX) -otoken.yy.c token.l
 clean:
 	rm -f *.o *.exe
