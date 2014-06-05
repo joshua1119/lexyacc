@@ -1,0 +1,438 @@
+;----------------------------
+[Info]
+name = "Mugen-Destiny"          
+author = "LeonhardtAstle"       
+
+;----------------------------
+[Files]
+spr = system.sff          
+snd = system.snd          
+logo.storyboard = intro.def         
+intro.storyboard = Scence.def       
+select = select.def       
+fight = fight.def         
+font1 = font/f-4x6.fnt    
+font2 = font/f-6x9.fnt   
+font3 = font/jg.fnt  
+font4 = font/qoh_big.fnt
+font5 = font/Qoh_small.fnt
+font6 = font/2k3_select.fnt  
+font7 = font/XII_Name2.fnt
+font8 = font/Small Fonts.fnt
+font9 = font/kof2kname.fnt
+  
+;----------------------------
+[Music]
+title.bgm =
+title.bgm.loop =1
+select.bgm =
+select.bgm.loop =1
+vs.bgm =
+vs.bgm.loop =0
+
+;-------------------------------------------------------------------
+[TitleInfo]
+fadein.time = 10
+fadeout.time = 10
+menu.pos = 160,185
+menu.item.font = 6,0,0   ;默认字体
+menu.item.active.font = 4,0,0  ;选择后字体
+menu.item.spacing = 0, 10  ;每栏文字间隔
+
+menu.itemname.arcade = "ARCADE"
+menu.itemname.versus = "VS MODE"
+menu.itemname.teamarcade = "TEAM ARCADE"
+menu.itemname.teamversus = "TEAM VS"
+menu.itemname.teamcoop = "TEAM CO-OP"
+menu.itemname.survival = "SURVIVAL"
+menu.itemname.survivalcoop = "SURVIVAL CO-OP"
+menu.itemname.training = "TRAINING"
+menu.itemname.watch = "WATCH"
+menu.itemname.options = "OPTIONS"
+menu.itemname.exit = "EXIT"
+
+menu.window.margins.y = 12, 8
+menu.window.visibleitems = 4
+menu.boxcursor.visible = 1    
+menu.boxcursor.coords = -58,-10,57,2
+
+cursor.move.snd = 100,0
+cursor.done.snd = 100,1
+cancel.snd = 100,2
+
+;----------------------------
+[TitleBGdef]
+bgclearcolor = 0,0,0
+
+[TitleBG 0]
+type  = normal
+spriteno = 100,0
+layerno = 0
+start =0,0
+
+;-------------------------------------------------------------------
+;选人界面选项
+[SelectInfo]
+fadein.time = 10
+fadeout.time = 10
+rows = 30 ;行数
+columns =25 ;每行人数
+wrapping = 1    ;是否允许光标饶回1允许0关闭         
+pos =12,50   ;角色板块起始位置      
+showemptyboxes = 0     ;是否显示空的选人框 0不显示
+moveoveremptyboxes = 0  ;是否让光标在空格上移动 1允许
+cell.size = 25,25     ;选人头像尺寸    
+cell.spacing = 8        ;各个选人框的单距      
+cell.bg.spr = 150,0       
+cell.random.spr = 151,0   
+cell.random.switchtime = 4
+
+p1.cursor.startcell = 0,8    ;0,0表示选人框P1默认在第一行第一个位置
+p1.cursor.active.spr = 160,0
+p1.cursor.done.spr = 161,0
+p1.cursor.move.snd = 100,0 
+p1.cursor.done.snd = 100,1
+p1.random.move.snd = 100,0
+
+p2.cursor.startcell = 0,10     ;选人框P2默认位置
+p2.cursor.active.spr = 170,0
+p2.cursor.done.spr = 171,0
+p2.cursor.blink = 1       
+p2.cursor.move.snd = 100,0
+p2.cursor.done.snd = 100,1
+p2.random.move.snd = 100,0
+
+random.move.snd.cancel = 0
+stage.move.snd = 100,0 ;选择场景时的声音
+stage.done.snd = 100,1 ;选定场景时的声音
+cancel.snd = 100,2
+portrait.offset = 0,0
+portrait.scale = 1,1
+title.offset = 320,18   ;标题起始位置  
+title.font = 8,0,0       ;标题字体 
+;大头像
+p1.face.offset = 6,7    ;P1大头像的坐标
+p1.face.scale = 1,1     
+p1.face.facing = 1       ;P1大头像的朝向（1为右，-1为左）
+p2.face.offset = 634,7  ;P2大头像的坐标
+p2.face.scale = 1,1
+p2.face.facing = -1      ;P2大头像的朝向（1为右，-1为左）
+;人名
+p1.name.offset = 135,60
+p1.name.font = 4,0,1      
+p2.name.offset = 505,60
+p2.name.font = 4,0,-1
+;场景选择
+stage.pos = 320,40
+stage.active.font = 6,0,0
+stage.active2.font = 6,0,0
+stage.done.font = 6,0,0
+;队伍菜单
+teammenu.move.wrapping = 1
+p1.teammenu.pos = 20, 167
+;p1.teammenu.bg.spr =
+p1.teammenu.selftitle.font =6,0, 1
+p1.teammenu.selftitle.text = Select team mode
+p1.teammenu.enemytitle.font = 8,0, 1
+p1.teammenu.enemytitle.text = Opponent team mode
+p1.teammenu.move.snd = 100,0
+p1.teammenu.value.snd = 100,0
+p1.teammenu.done.snd = 100,1
+p1.teammenu.item.offset = 0,-100
+p1.teammenu.item.spacing = 0,15
+p1.teammenu.item.font = 6,0, 1
+p1.teammenu.item.active.font = 7,0, 1
+p1.teammenu.item.active2.font =7,0, 1 
+p1.teammenu.item.cursor.offset = -10, 0
+p1.teammenu.item.cursor.anim = 180
+p1.teammenu.value.icon.offset = 60,1
+p1.teammenu.value.icon.spr = 181,0
+p1.teammenu.value.empty.icon.offset = 60,1
+p1.teammenu.value.empty.icon.spr = 182,0
+p1.teammenu.value.spacing = 6,0
+
+p2.teammenu.pos = 620, 167
+;p2.teammenu.bg.spr =
+p2.teammenu.selftitle.font = 6,0, -1
+p2.teammenu.selftitle.text = Select team mode
+p2.teammenu.enemytitle.font = 8,0, -1
+p2.teammenu.enemytitle.text = Opponent team mode
+p2.teammenu.move.snd = 100,0
+p2.teammenu.value.snd = 100,0
+p2.teammenu.done.snd = 100,1
+p2.teammenu.item.offset = 0,-100
+p2.teammenu.item.spacing = 0,15
+p2.teammenu.item.font = 6,0, -1
+p2.teammenu.item.active.font = 7,0, -1
+p2.teammenu.item.active2.font = 7,0, -1
+p2.teammenu.item.cursor.offset = 10, 0
+p2.teammenu.item.cursor.anim = 190
+p2.teammenu.value.icon.offset = -60,1
+p2.teammenu.value.icon.spr = 191,0
+p2.teammenu.value.empty.icon.offset = -60,1
+p2.teammenu.value.empty.icon.spr = 192,0
+p2.teammenu.value.spacing = -6,0
+
+;-----------------------
+[SelectBGdef]
+;spr = graphics/selectbg.sff 
+
+[SelectBG 0]  
+type  = normal
+spriteno = 101,0
+layerno = 0
+start =0,0
+
+[SelectBG 1]
+type  = Anim
+actionno = 80
+layerno = 0
+start = -320,0
+trans = add
+
+[SelectBG 1] 
+type  = normal
+spriteno = 110,0
+layerno = 0
+start =-185,5
+
+[SelectBG 1] 
+type  = normal
+spriteno = 110,1
+layerno = 0
+start =-25,5
+
+[SelectBG 1] 
+type  = normal
+spriteno = 111,0
+layerno = 0
+start =-81,268
+
+[SelectBG 1] 
+type  = normal
+spriteno = 111,1
+layerno = 0
+start =-79,270
+
+[SelectBG 0] 
+type  = normal
+spriteno = 120,0
+layerno = 0
+start =-315,5
+
+
+[SelectBG 0] 
+type  = normal
+spriteno = 120,0
+layerno = 0
+start =194,5
+
+[SelectBG 3]
+type  = anim
+actionno = 130
+layerno=1
+start = -336,-25
+window = 7,7, 136,157
+
+[SelectBG 3] ;trib anim 2p
+type  = anim
+actionno = 130
+layerno=1
+start = 338,-25
+window = 503,7, 635,157
+
+
+[Begin Action 80] 
+loopstart
+80,0, 0,0, 1, ,A
+80,1, 0,0, 1, ,A
+80,2, 0,0, 1, ,A
+80,3, 0,0, 1, ,A
+80,4, 0,0, 1, ,A
+80,5, 0,0, 1, ,A
+80,6, 0,0, 1, ,A
+80,7, 0,0, 1, ,A
+80,8, 0,0, 1, ,A
+80,9, 0,0, 1, ,A
+80,10, 0,0, 1, ,A
+80,11, 0,0, 1, ,A
+80,12, 0,0, 1, ,A
+80,13, 0,0, 1, ,A
+80,14, 0,0, 1, ,A
+80,15, 0,0, 1, ,A
+80,16, 0,0, 1, ,A
+80,17, 0,0, 1, ,A
+80,18, 0,0, 1, ,A
+80,19, 0,0, 1, ,A
+80,20, 0,0, 1, ,A
+80,21, 0,0, 1, ,A
+80,22, 0,0, 1, ,A
+80,23, 0,0, 1, ,A
+80,24, 0,0, 1, ,A
+80,25, 0,0, 1, ,A
+80,26, 0,0, 1, ,A
+80,27, 0,0, 1, ,A
+80,28, 0,0, 1, ,A
+80,29, 0,0, 1, ,A
+80,30, 0,0, 1, ,A
+80,31, 0,0, 1, ,A
+80,32, 0,0, 1, ,A
+80,33, 0,0, 1, ,A
+80,34, 0,0, 1, ,A
+80,35, 0,0, 1, ,A
+80,36, 0,0, 1, ,A
+80,37, 0,0, 1, ,A
+80,38, 0,0, 1, ,A
+80,39, 0,0, 1, ,A
+
+[Begin Action 130]
+130,0, 0,0, 5,,as156d256
+130,0, 0,0, 5,,as146d256
+130,0, 0,0, 5,,as136d256
+130,0, 0,0, 5,,as126d256
+130,0, 0,0, 5,,as116d256
+130,0, 0,0, 5,,as106d256
+130,0, 0,0, 5,,as96d256
+130,0, 0,0, 5,,as86d256
+130,0, 0,0, 5,,as76d256
+130,0, 0,0, 5,,as66d256
+130,0, 0,0, 5,,as56d256
+130,0, 0,0, 5,,as76d256
+130,0, 0,0, 5,,as96d256
+130,0, 0,0, 5,,as116d256
+130,0, 0,0, 5,,as136d256
+
+;-------------------------------------------------------------------
+[VSScreen]
+time = 150                
+fadein.time = 15
+fadeout.time = 15
+;Big portraits
+p1.pos =  20,31
+p1.facing = 1
+p1.scale = 1,1
+p2.pos = 299,31
+p2.facing = -1
+p2.scale = 1,1
+;Names
+p1.name.pos  =  78,190
+p1.name.font =   3,0,0
+p2.name.pos  = 241,190
+p2.name.font =   3,0,0
+
+;-----------------------
+[VersusBGdef] 
+
+[VersusBG 0]
+type  = normal
+spriteno = 100,0
+layerno = 0
+start =0,0
+
+
+[VersusBG 1]  
+type  = anim
+actionno = 1000
+layerno = 1
+start = -160,0
+mask = 1
+
+[Begin Action 1000]
+1000,0,0,0,2
+1000,1,0,0,2
+1000,2,0,0,2
+1000,3,0,0,2
+1000,4,0,0,2
+1000,5,0,0,2
+1000,6,0,0,2
+1000,7,0,0,2
+1000,8,0,0,2
+1000,9,0,0,2
+1000,8,0,0,2
+1000,7,0,0,2
+1000,6,0,0,2
+1000,5,0,0,2
+1000,4,0,0,2
+1000,3,0,0,2
+1000,2,0,0,2
+1000,1,0,0,2
+1000,0,0,0,2
+
+
+
+;-------------------------------------------------------------------
+[DemoMode]
+enabled = 1               
+select.enabled = 0        
+vsscreen.enabled = 0     
+title.waittime = 600      
+fight.endtime = 1500     
+fight.playbgm = 0         
+fight.bars.display = 0    
+intro.waitcycles = 1      
+debuginfo = 0             
+
+;-------------------------------------------------------------------
+;Continue screen definition
+[ContinueScreen]
+enabled = 1               
+
+;-------------------------------------------------------------------
+;Game over screen definition
+[GameOverScreen]
+enabled = 1               
+storyboard = ak-svcgameover.def             
+
+;-------------------------------------------------------------------
+[WinScreen]
+enabled = 1               
+wintext.text = Congratulations!
+wintext.font = 2,0,0
+wintext.offset = 159,70
+wintext.displaytime = -1
+wintext.layerno = 2
+fadein.time = 32
+pose.time = 300
+fadeout.time = 64
+
+;-------------------------------------------------------------------
+[DefaultEnding]
+enabled = 1               
+storyboard = ending.def           
+
+;-------------------------------------------------------------------
+[EndCredits]
+enabled = 1              
+storyboard = ak-svcgameover.def             
+
+;-------------------------------------------------------------------
+[SurvivalResultsScreen]
+enabled = 1
+winstext.text = Rounds survived: %i  
+winstext.font = 3,0,0
+winstext.offset = 159,70
+winstext.displaytime = -1
+winstext.layerno = 2
+fadein.time = 32
+show.time = 300
+fadeout.time = 64
+roundstowin = 2           
+
+;-------------------------------------------------------------------
+[OptionInfo]
+cursor.move.snd = 100,0
+cursor.done.snd = 100,1
+cancel.snd = 100,2
+
+;-------------------
+[OptionBGdef] 
+fadein.time = 10
+fadeout.time = 10
+
+[OptionBG 1] 
+type  = normal
+spriteno = 102,0
+layerno = 0
+start =0,0
+
+
