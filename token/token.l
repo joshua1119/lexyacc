@@ -4,15 +4,19 @@
 #include <ctype.h>
 #include <string.h>
 
-#define ID 194
-#define ICON 195
-#define FCON 196
-#define STRING 197
-#define NEWLINE 198
-#define OP 199
-#define WHITE 200
-#define ERRORCHAR 300
-static int lineno = 0;
+#ifndef __TOKEN_TYPE_
+#define TOKEN_SECTION 193
+#define TOKEN_ID 194
+#define TOKEN_ICON 195
+#define TOKEN_FCON 196
+#define TOKEN_STRING 197
+#define TOKEN_NEWLINE 198
+#define TOKEN_OP 199
+#define TOKEN_ERRORCHAR 300
+
+#define __TOKEN_TYPE_
+#endif // __TOKEN_TYPE_
+
 %}
 
 letter [A-Za-z]
@@ -22,52 +26,56 @@ o [0-7]
 d [0-9]
 suffix [UuLl]
 white [\t\r\x20]
-%start COMMENT
+%start LEX_SECTION LEX_TRIGGER
 
 %%
 
-;[^\n]* {BEGIN COMMENT;}
-<COMMENT>\n {lineno++;BEGIN 0;return NEWLINE;}
-\n {lineno++;return NEWLINE;}
-
-\"[^\"]*\" return STRING;
+;[^\n]* {}
+\n {yylineno++;BEGIN 0;return TOKEN_NEWLINE;}
 
 
-0{o}*{suffix}? return ICON; 
-0[xX]{h}+{suffix}? return ICON;
-[1-9]{d}*{suffix}? return ICON; 
-([1-9]{d}*|{d}+\.{d}*|{d}*\.{d}+)([eE][-+]?{d}+)?[fF]? return FCON;
-"**" return OP;
-">=" return OP;
-"<=" return OP;
-":=" return OP;
-"!=" return OP;
-"&&" return OP;
-"||" return OP;
-"~" return OP;
-"!" return OP;
-"-" return OP;
-"*" return OP;
-"/" return OP;
-"%" return OP;
-"+" return OP;
-">" return OP;
-"<" return OP;
-"=" return OP;
-"[" return OP;
-"]" return OP;
-"(" return OP;
-")" return OP;
-"\\" return OP;
-"&" return OP;
-"^" return OP;
-"|" return OP;
-"," return OP;
-"$" return OP;
+^"[" {BEGIN LEX_SECTION;return TOKEN_OP;}
+<LEX_SECTION>[^\]]* {return  TOKEN_SECTION;}
+<LEX_SECTION>"]" {BEGIN 0;return TOKEN_OP;}
 
-{letter}{alnum}* return ID;
-{white}+ {return WHITE;}
-. {return ERRORCHAR;}
+\"[^\"]*\" return TOKEN_STRING;
+
+
+0{o}*{suffix}? return TOKEN_ICON; 
+0[xX]{h}+{suffix}? return TOKEN_ICON;
+[1-9]{d}*{suffix}? return TOKEN_ICON; 
+([1-9]{d}*|{d}+\.{d}*|{d}*\.{d}+)([eE][-+]?{d}+)?[fF]? return TOKEN_FCON;
+"**" return TOKEN_OP;
+">=" return TOKEN_OP;
+"<=" return TOKEN_OP;
+":=" return TOKEN_OP;
+"!=" return TOKEN_OP;
+"&&" return TOKEN_OP;
+"||" return TOKEN_OP;
+"~" return TOKEN_OP;
+"!" return TOKEN_OP;
+<LEX_TRIGGER>"-" return TOKEN_OP;
+"*" return TOKEN_OP;
+<LEX_TRIGGER>"/" return TOKEN_OP;
+"%" return TOKEN_OP;
+"+" return TOKEN_OP;
+">" return TOKEN_OP;
+"<" return TOKEN_OP;
+"=" {BEGIN LEX_TRIGGER;return TOKEN_OP;}
+"[" return TOKEN_OP;
+"]" return TOKEN_OP;
+"(" return TOKEN_OP;
+")" return TOKEN_OP;
+<LEX_TRIGGER>"\\" return TOKEN_OP;
+"&" return TOKEN_OP;
+"^" return TOKEN_OP;
+"|" return TOKEN_OP;
+"," return TOKEN_OP;
+"$" return TOKEN_OP;
+
+{letter}[A-Za-z0-9/_\\\-\.]* return TOKEN_ID;
+{white}+ {}
+. {return TOKEN_ERRORCHAR;}
 
 %%
 
@@ -78,10 +86,10 @@ int yywrap()
 
 int main()
 {
-	yy_scan_string("1*2+33-3aaa;sdfsd\naaa\n");
+	yy_scan_string("Terry-.98");
 	int c;
     while(c=yylex()){
-		printf("%d, %s\n", c, yytext);
+		printf("%d, %s, %d\n", c, yytext, yylineno);
 	};
 }
 
