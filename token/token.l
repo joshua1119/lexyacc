@@ -1,4 +1,4 @@
-%option nounistd
+%option nounistd never-interactive
 %{
 #include <stdio.h>
 #include <ctype.h>
@@ -12,6 +12,7 @@
 #define OP 199
 #define WHITE 200
 #define ERRORCHAR 300
+static int lineno = 0;
 %}
 
 letter [A-Za-z]
@@ -26,11 +27,11 @@ white [\t\r\x20]
 %%
 
 ;[^\n]* {BEGIN COMMENT;}
-<COMMENT>\n {printf("comment NEWLINE");  BEGIN 0;return NEWLINE;}
-\n {printf("newlien"); return NEWLINE;}
+<COMMENT>\n {lineno++;BEGIN 0;return NEWLINE;}
+\n {lineno++;return NEWLINE;}
 
 \"[^\"]*\" return STRING;
-\"[^\"]*{white}* {printf("Adding missing\"to string constant\n");return STRING;}
+
 
 0{o}*{suffix}? return ICON; 
 0[xX]{h}+{suffix}? return ICON;
@@ -65,8 +66,8 @@ white [\t\r\x20]
 "$" return OP;
 
 {letter}{alnum}* return ID;
-{white}+ {printf("(white:%s;)",yytext);return WHITE;}
-. {printf("Invalid char %s",yytext);return ERRORCHAR;}
+{white}+ {return WHITE;}
+. {return ERRORCHAR;}
 
 %%
 
