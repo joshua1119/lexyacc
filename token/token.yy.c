@@ -2065,14 +2065,24 @@ int yywrap()
 {
     return 1;
 }
+void backtoken(int);
+void backtoken(int count)
+{
+	yyless(count);
+}
 
 int main()
 {
-	yy_scan_string("Terry-.98");
+	yy_scan_string("Terry-.98 sdfsdfsd sdf");
 	int c;
-    while(c=yylex()){
-		printf("%d, %s, %d\n", c, yytext, yylineno);
-	};
+	yylex();
+	printf("%d,%s,%d\n", c, yytext, yylineno);
+	yylex();
+	printf("%d,%s,%d\n", c, yytext, yylineno);
+	backtoken(0);
+	yylex();
+	printf("%d,%s,%d\n", c, yytext, yylineno);
+    return 0;
 }
 
 
