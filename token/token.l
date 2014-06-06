@@ -26,7 +26,7 @@ o [0-7]
 d [0-9]
 suffix [UuLl]
 white [\t\r\x20]
-%start LEX_SECTION LEX_TRIGGER
+%start LEX_SECTION LEX_TRIGGER LEX_STRING
 
 %%
 
@@ -38,7 +38,9 @@ white [\t\r\x20]
 <LEX_SECTION>[^\]]* {return  TOKEN_SECTION;}
 <LEX_SECTION>"]" {BEGIN 0;return TOKEN_OP;}
 
-\"[^\"]*\" return TOKEN_STRING;
+<LEX_STRING>[^\"]* return TOKEN_STRING;
+<LEX_STRING>\" BEGIN 0;
+\" BEGIN LEX_STRING;
 
 
 0{o}*{suffix}? return TOKEN_ICON; 
@@ -86,7 +88,7 @@ int yywrap()
 
 int main()
 {
-	yy_scan_string("Terry-.98");
+	yy_scan_string("sd\"Terry-.98\"sd sd s");
 	int c;
     while(c=yylex()){
 		printf("%d, %s, %d\n", c, yytext, yylineno);
