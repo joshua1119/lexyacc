@@ -85,14 +85,26 @@ int yywrap()
 {
     return 1;
 }
+void backtoken(int);
+void backtoken(int count)
+{
+	yyless(count);
+}
 
 int main()
 {
 	yy_scan_string("sd\"Terry-.98\"sd sd s");
 	int c;
-    while(c=yylex()){
-		printf("%d, %s, %d\n", c, yytext, yylineno);
-	};
+	c = yylex();
+	printf("%d,%s,%d\n", c, yytext, yylineno);
+	c = yylex();
+	printf("%d,%s,%d\n", c, yytext, yylineno);
+	backtoken(0);
+	c = yylex();
+	printf("%d,%s,%d\n", c, yytext, yylineno);
+	while(c=yylex())
+	{printf("%d,%s,%d\n", c, yytext, yylineno);}
+    return 0;
 }
 
 
