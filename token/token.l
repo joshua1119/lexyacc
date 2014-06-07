@@ -75,7 +75,7 @@ white [\t\r\x20]
 "," return TOKEN_OP;
 "$" return TOKEN_OP;
 
-{letter}[A-Za-z0-9/_\\\-\.]* return TOKEN_ID;
+{letter}[A-Za-z0-9/_\\\-\.\040]* return TOKEN_ID;
 {white}+ {}
 . {return TOKEN_ERRORCHAR;}
 
@@ -93,7 +93,7 @@ void backtoken(int count)
 
 int main()
 {
-	yy_scan_string("sd\"Terry-.98\"sd sd s");
+	yy_scan_string("sd\"Terry-.98\" GetHitVar(slidetime) <= 0 && GetHitVar(hittime) <= 0 && time = 0 && var(12) <= 999");
 	int c;
 	c = yylex();
 	printf("%d,%s,%d\n", c, yytext, yylineno);
